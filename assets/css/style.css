@@ -26,3 +26,17 @@
     width: 13%; 
     text-align: center;
 }
+
+.box-2-first {
+    background: navy;
+    color: turquoise;
+}
+
+.box-2-second {
+    background: turquoise;
+    color: navy;
+}
+
+.box-2 p {
+    line-height: 40px;
+}
