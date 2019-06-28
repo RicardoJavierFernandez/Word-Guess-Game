@@ -28,7 +28,7 @@ for(i=0; i < lengthOfSelectedWord; i++){
     //create a variable that stores a span element
     var spanElement = document.createElement('span')
     spanElement.id = 'span' + i; //add the element id span + a number
-    spanElement.className = selectedWord[i] //name the span class after the letter in the selected word
+    spanElement.className = selectedWord[i].toLowerCase() //name the span class after the letter in the selected word
     spanElement.innerText = '_ '; //set the inner text of the span element to an underscore
 
     var wordArea = document.getElementById('dashes');
