@@ -28,35 +28,34 @@ for(i=0; i < lengthOfSelectedWord; i++){
     //create a variable that stores a span element
     var spanElement = document.createElement('span')
     spanElement.id = 'span' + i; //add the element id span + a number
-    spanElement.className = selectedWord[i].toLowerCase() //name the span class after the letter in the selected word
-    spanElement.innerText = '_ '; //set the inner text of the span element to an underscore
+    spanElement.className = selectedWord[i].toLowerCase() //name the span class after the letter in the selected word string
+    spanElement.innerText = '_ '; //set the inner text of the span element to an underscore followed by a space
 
-    var wordArea = document.getElementById('dashes');
-    wordArea.appendChild(spanElement);
+    var wordArea = document.getElementById('dashes'); //store the DOM object with an id 'dashes'
+    wordArea.appendChild(spanElement); //append the dashes to that area in the HTML code 
 
     document.onkeyup = function(event) {
         var keyPress = event.key;
+        document.getElementById('selectedLetter').innerHTML = keyPress;
         //console.log(document.getElementsByClassName(keyPress))
         var keyClass = document.getElementsByClassName(keyPress);
+        // if the letter exists in any class name, it will create an array (formally
+        // known as a "collection" so an if statement testing to see if the collection
+        // is greater than one will capture whether the letter is part of the selected word)
         if(keyClass.length > 0){
             for(i=0; i < keyClass.length; i++){
                 keyClass[i].innerText = keyPress
                 console.log(keyClass[i])
+            }
+        }
+        else {
+            console.log('Letter not in word!')
+            // need to add logic to add a counter variable and stop the entire loop
+            // if the counter variable hits a certain number of tries
         }
         
         }
     }
-}
-
-/*var numberOfDashes = '_ '.repeat(lengthOfSelectedWord)
-document.getElementById("dashes").innerHTML = numberOfDashes
-document.getElementById("dashes").innerHTML = arrayName[0] + arrayName[1]*/
-// Using lengthOfSelectedWord, select in order the index location and change the dash with the selected letter of the user.
-
-// As the user provides a letter, search if that letter exists in the string, and see if we can replace the letter
-// Change the selected word from the array (returns a string) to an array of the letters. (i.e. "test" = ["t", "e", "s", "t"])
-
-
 
 
 //'<span id="letter" + i + '"> _ </span>"
