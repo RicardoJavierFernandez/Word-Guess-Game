@@ -37,21 +37,25 @@ for(i=0; i < lengthOfSelectedWord; i++){
     document.onkeyup = function(event) {
         var keyPress = event.key;
         document.getElementById('selectedLetter').innerHTML = keyPress;
-        //console.log(document.getElementsByClassName(keyPress))
         var keyClass = document.getElementsByClassName(keyPress);
-        // if the letter exists in any class name, it will create an array (formally
+        // if the letter exists as any class name, it will create an array (formally
         // known as a "collection" so an if statement testing to see if the collection
         // is greater than one will capture whether the letter is part of the selected word)
         if(keyClass.length > 0){
             for(i=0; i < keyClass.length; i++){
                 keyClass[i].innerText = keyPress
-                console.log(keyClass[i])
             }
         }
         else {
-            console.log('Letter not in word!')
-            // need to add logic to add a counter variable and stop the entire loop
-            // if the counter variable hits a certain number of tries
+            var incorrect = document.getElementById('incorrect')
+            var incorrectNumber = Number(incorrect.innerText)
+            if(incorrectNumber < 10){
+                incorrect.innerText = incorrectNumber + 1
+            }
+            else{
+                incorrect.innerText = 'GAME OVER'
+                alert("GAME OVER!")
+            }
         }
         
         }
