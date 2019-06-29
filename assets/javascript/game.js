@@ -60,8 +60,3 @@ for(i=0; i < lengthOfSelectedWord; i++){
         
         }
     }
-
-
-//'<span id="letter" + i + '"> _ </span>"
-// <span id="letter">  number here </span>
-// in javascript change the value between a <span></span> tag/element based on the letter pressed
