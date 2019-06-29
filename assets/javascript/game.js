@@ -49,11 +49,12 @@ for(i=0; i < lengthOfSelectedWord; i++){
         else {
             var incorrect = document.getElementById('incorrect')
             var incorrectNumber = Number(incorrect.innerText)
-            if(incorrectNumber < 10){
-                incorrect.innerText = incorrectNumber + 1
+            if(incorrectNumber > 1){
+                incorrect.innerText = incorrectNumber - 1
             }
             else{
                 incorrect.innerText = 'GAME OVER'
+                incorrect.style.color = 'red'
                 alert("GAME OVER!")
             }
         }
