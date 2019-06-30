@@ -51,6 +51,7 @@ document.onkeyup = function(event) {
         for(i=0; i < keyClass.length; i++){
             keyClass[i].innerHTML = keyPress;
         }
+        //if statement to check if there are no more dashes (_) remaining
     }
     else {
         var incorrect = document.getElementById('incorrect');
