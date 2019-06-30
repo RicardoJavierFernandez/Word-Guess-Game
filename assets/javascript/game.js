@@ -6,6 +6,7 @@ document.onkeyup = function(event) {
 
 // Create an array of words to be used in Hangman game
 var wordsToGuess = ["Dolphins", "Hurricanes", "Marlins", "Panthers", "Heat"];
+
 // Create a variable to store the length of the array to be used in the selectRandomNumber function
 var lengthOfList = wordsToGuess.length;
 
@@ -29,35 +30,40 @@ for(i=0; i < lengthOfSelectedWord; i++){
     var spanElement = document.createElement('span')
     spanElement.id = 'span' + i; //add the element id span + a number
     spanElement.className = selectedWord[i].toLowerCase() //name the span class after the letter in the selected word string
-    spanElement.innerText = '_ '; //set the inner text of the span element to an underscore followed by a space
+    spanElement.innerHTML = '_ '; //set the inner text of the span element to an underscore followed by a space
 
     var wordArea = document.getElementById('dashes'); //store the DOM object with an id 'dashes'
-    wordArea.appendChild(spanElement); //append the dashes to that area in the HTML code 
+    wordArea.appendChild(spanElement);
+ } //append the dashes to that area in the HTML code 
 
-    document.onkeyup = function(event) {
-        var keyPress = event.key;
-        document.getElementById('selectedLetter').innerHTML = keyPress;
-        var keyClass = document.getElementsByClassName(keyPress);
-        // if the letter exists as any class name, it will create an array (formally
-        // known as a "collection" so an if statement testing to see if the collection
-        // is greater than one will capture whether the letter is part of the selected word)
-        if(keyClass.length > 0){
-            for(i=0; i < keyClass.length; i++){
-                keyClass[i].innerText = keyPress
-            }
-        }
-        else {
-            var incorrect = document.getElementById('incorrect')
-            var incorrectNumber = Number(incorrect.innerText)
-            if(incorrectNumber > 1){
-                incorrect.innerText = incorrectNumber - 1
-            }
-            else{
-                incorrect.innerText = 'GAME OVER'
-                incorrect.style.color = 'red'
-                alert("GAME OVER!")
-            }
-        }
-        
+var lettersAlreadySelected = ''
+
+document.onkeyup = function(event) {
+    var keyPress = event.key;
+    lettersAlreadySelected += keyPress;
+    console.log(lettersAlreadySelected);
+    document.getElementById('selectedLetter').innerHTML = lettersAlreadySelected;
+    var keyClass = document.getElementsByClassName(keyPress);
+    // if the letter exists as any class name, it will create an array (formally
+    // known as a "collection" so an if statement testing to see if the collection
+    // is greater than one will capture whether the letter is part of the selected word)
+    if(keyClass.length > 0){
+        for(i=0; i < keyClass.length; i++){
+            keyClass[i].innerHTML = keyPress;
         }
     }
+    else {
+        var incorrect = document.getElementById('incorrect');
+        var incorrectNumber = Number(incorrect.innerText);
+        if(incorrectNumber > 1){
+            incorrect.innerHTML = incorrectNumber - 1;
+        }
+        else{
+            incorrect.innerHTML = 'GAME OVER';
+            incorrect.style.color = 'red';
+            alert("GAME OVER!");
+        }
+    }
+    
+    }
+    
