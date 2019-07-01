@@ -73,6 +73,7 @@ document.onkeyup = function(event) {
             incorrect.innerHTML = 'GAME OVER';
             incorrect.style.color = 'red';
             alert("GAME OVER!");
+            location.reload(true);
         }
     }
     
