@@ -24,6 +24,7 @@ var selectedWord = wordsToGuess[randomIndex]
 
 // Store the length of the selected word to create dashes on the screen
 var lengthOfSelectedWord = selectedWord.length
+var selectedWordUniqueLetters = new Set([])
 
 for(i=0; i < lengthOfSelectedWord; i++){
     //create a variable that stores a span element
@@ -32,12 +33,15 @@ for(i=0; i < lengthOfSelectedWord; i++){
     spanElement.className = selectedWord[i].toLowerCase() //name the span class after the letter in the selected word string
     spanElement.innerHTML = '_ '; //set the inner text of the span element to an underscore followed by a space
 
+    // Add letter to set
+    selectedWordUniqueLetters.add(selectedWord[i])
+
     var wordArea = document.getElementById('dashes'); //store the DOM object with an id 'dashes'
     wordArea.appendChild(spanElement);
  } //append the dashes to that area in the HTML code 
 
 var lettersAlreadySelected = ''
-var correctGuesses = 0;
+var correctGuesses = new Set([]);
 
 document.onkeyup = function(event) {
     var keyPress = event.key;
@@ -51,12 +55,11 @@ document.onkeyup = function(event) {
         for(i=0; i < keyClass.length; i++){
             keyClass[i].innerHTML = keyPress;
         }
-        correctGuesses += 1;
+        correctGuesses.add(keyPress);
         console.log(correctGuesses);
-        if(correctGuesses === lengthOfSelectedWord){
+        if(correctGuesses.size === selectedWordUniqueLetters.size){
             alert("YOU WIN!");
             location.reload(true);
-
         }   
     }
     else {
