@@ -37,11 +37,11 @@ for(i=0; i < lengthOfSelectedWord; i++){
  } //append the dashes to that area in the HTML code 
 
 var lettersAlreadySelected = ''
+var correctGuesses = 0;
 
 document.onkeyup = function(event) {
     var keyPress = event.key;
     lettersAlreadySelected += keyPress;
-    console.log(lettersAlreadySelected);
     document.getElementById('selectedLetter').innerHTML = lettersAlreadySelected;
     var keyClass = document.getElementsByClassName(keyPress);
     // if the letter exists as any class name, it will create an array (formally
@@ -51,10 +51,18 @@ document.onkeyup = function(event) {
         for(i=0; i < keyClass.length; i++){
             keyClass[i].innerHTML = keyPress;
         }
+        correctGuesses += 1;
+        console.log(correctGuesses);
+        if(correctGuesses === lengthOfSelectedWord){
+            alert("YOU WIN!");
+            location.reload(true);
+
+        }   
     }
     else {
         var incorrect = document.getElementById('incorrect');
         var incorrectNumber = Number(incorrect.innerText);
+        
         if(incorrectNumber > 1){
             incorrect.innerHTML = incorrectNumber - 1;
         }
